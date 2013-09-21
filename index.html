@@ -28,7 +28,9 @@
             <div class="pure-g-r">
                 <div class="pure-u-1 center">
                     <h1>Thengamangchakka Raspberry Pi IP</h1>
-                    <h2 id="ip"></h2>
+                    <h2 id="ip">
+                        <img src="./page_files/loading.gif" alt="Loading.." />
+                    </h2>
                     <div id="footer">
                     <a href="ip.json" class="muted">JSON</a>
                     <a href="ip.txt" class="muted">TXT</a>
@@ -41,12 +43,16 @@
         
         <script>
             $(function(){
-               $.ajax({
-                   url: './ip.json',
-                   success: function(data){
-                       $("#ip").text(data.ip);
-                   }
-               });
+               var update_ip = function(){
+                   $.ajax({
+                       url: './ip.json',
+                       success: function(data){
+                           $("#ip").text(data.ip);
+                       }
+                   });
+               }
+               update_ip();
+               window.setInterval(update_ip, 60000);
             });
         </script>
     </body>
