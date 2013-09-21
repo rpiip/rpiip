@@ -46,6 +46,7 @@
                var update_ip = function(){
                    $.ajax({
                        url: './ip.json',
+                       cache: false,
                        success: function(data){
                            $("#ip").text(data.ip);
                        }
