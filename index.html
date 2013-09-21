@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+        <link rel="stylesheet" type="text/css" href="https://rawgithub.com/tilomitra/cssextras/master/css/cssextras.css">
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.1/build/cssbutton/cssbutton-min.css">
+        <style>
+            .center {
+                text-align: center;
+            }
+            .muted {
+                color: #CCC;
+            }
+            #footer {
+                position: fixed;
+                width: 100%;
+                text-align: right;
+                bottom: 0;
+            }
+            #footer a {
+                display: inline-block;
+                margin: 5px;
+                font-size: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="l-content">
+            <div class="pure-g-r">
+                <div class="pure-u-1 center">
+                    <h1>Thengamangchakka Raspberry Pi IP</h1>
+                    <h2 id="ip"></h2>
+                    <div id="footer">
+                    <a href="ip.json" class="muted">JSON</a>
+                    <a href="ip.txt" class="muted">TXT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        
+        <script>
+            $(function(){
+               $.ajax({
+                   url: './ip.json',
+                   success: function(data){
+                       $("#ip").text(data.ip);
+                   }
+               });
+            });
+        </script>
+    </body>
+</html>
