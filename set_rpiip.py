@@ -20,7 +20,8 @@ if __name__ == '__main__':
         '''Handles file not found IOError from open,
         no data from file and corrupt data from file'''
         new_ip = True
-
+    
+    print "Getting IP"
     ip = RPIIP()
 
     if ip.ip and new_ip != True and ip.ip != old_ip['ip']:
@@ -28,6 +29,7 @@ if __name__ == '__main__':
         new_ip = True
 
     if new_ip == True:
+        print "New IP: %s" %(ip.ip)
         with open(JSON_FILE, 'w') as outfile:
             json.dump(ip.elements, outfile)
         with open(TXT_FILE, 'w') as outfile:
